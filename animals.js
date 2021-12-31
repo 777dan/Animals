@@ -3,32 +3,7 @@ function Animal(name) {
     this.speed = 0;
 }
 
-function Rabbits(name) {
-    this.name = name;
-    this.speed = 0;
-}
-
-function Dogs(name) {
-    this.name = name;
-    this.speed = 0;
-}
-
-function Cocks(name) {
-    this.name = name;
-    this.speed = 0;
-}
-
-function Cats(name) {
-    this.name = name;
-    this.speed = 0;
-}
-
-function Snakes(name) {
-    this.name = name;
-    this.speed = 0;
-}
-
-function Elephants(name) {
+function Snake1(name) {
     this.name = name;
     this.speed = 0;
 }
@@ -37,111 +12,105 @@ Animal.prototype.run = function () {
     alert(this.name + " бежит!")
 }
 
-Rabbits.prototype.run = function () {
-    alert(this.name + " бежит!");
-};
+Snake1.prototype.run = function () {
+    alert(this.name + " ползёт!")
+}
 
-Dogs.prototype.run = function () {
-    alert(this.name + " скачет!");
-};
 
-Cocks.prototype.run = function () {
-    alert(this.name + " дерётся!");
-};
-
-Cats.prototype.run = function () {
-    alert(this.name + " крадётся!");
-};
-
-Snakes.prototype.run = function () {
-    alert(this.name + " ползает!");
-};
-
-Elephants.prototype.run = function () {
-    alert(this.name + " топает!");
-};
 
 function Rabbit(name) {
-    Rabbits.apply(this, arguments);
+    Animal.apply(this, arguments); // вызов конструктора родителя
 }
-
-function Dog(name) {
-    Dogs.apply(this, arguments);
-}
-
-function Cock(name) {
-    Cocks.apply(this, arguments);
-}
-
-function Cat(name) {
-    Cats.apply(this, arguments);
-}
-
-function Snake(name) {
-    Snakes.apply(this, arguments);
-}
-
-function Elephant(name) {
-    Elephants.apply(this, arguments);
-}
-
-Rabbit.prototype = Object.create(Rabbits.prototype);
+Rabbit.prototype = Object.create(Animal.prototype);
 Rabbit.prototype.constructor = Rabbit;
 
-Dog.prototype = Object.create(Dogs.prototype);
-Dog.prototype.constructor = Dog;
-
-Cock.prototype = Object.create(Cocks.prototype);
-Cock.prototype.constructor = Cock;
-
-Cat.prototype = Object.create(Cats.prototype);
-Cat.prototype.constructor = Cat;
-
-Snake.prototype = Object.create(Snakes.prototype);
-Snake.prototype.constructor = Snake;
-
-Elephant.prototype = Object.create(Elephants.prototype);
-Elephant.prototype.constructor = Elephant;
-
 Rabbit.prototype.run = function () {
-    Rabbits.prototype.run.apply(this);
-    alert(this.name + " подпрыгивает!");
-};
-
-Dog.prototype.run = function () {
-    Dogs.prototype.run.apply(this);
-    alert(this.name + " подскакивает!");
-};
-
-Cock.prototype.run = function () {
-    Cocks.prototype.run.apply(this);
-    alert(this.name + " кудахчет!");
-};
-
-Cat.prototype.run = function () {
-    Cats.prototype.run.apply(this);
-    alert(this.name + " мурлыкает!");
-};
-
-Snake.prototype.run = function () {
-    Snakes.prototype.run.apply(this);
-    alert(this.name + " шипит!");
-};
-
-Elephant.prototype.run = function () {
-    Elephants.prototype.run.apply(this);
-    alert(this.name + " визжит!");
+    Animal.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!") 
+    alert(this.name + " подпрыгивает!"); // добавлено свое действие к действию родителя
+    // let rabbit = new Rabbit('Кролик');
+    // rabbit.run();
 };
 
 let rabbit = new Rabbit('Кролик');
 rabbit.run();
-let dog = new Dog("Пёс");
+
+
+
+function Dog(name) {
+    Animal.apply(this, arguments); // вызов конструктора родителя
+}
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.run = function () {
+    Animal.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!")
+    alert(this.name + " виляет хвостом!"); // добавлено свое действие к действию родителя
+};
+
+let dog = new Dog('Пёс');
 dog.run();
-let cock = new Cock("Петух");
-cock.run();
-let cat = new Cat("Кот");
+
+
+
+function Cat(name) {
+    Animal.apply(this, arguments); // вызов конструктора родителя
+}
+Cat.prototype = Object.create(Animal.prototype);
+Cat.prototype.constructor = Cat;
+
+Cat.prototype.run = function () {
+    Animal.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!")
+    alert(this.name + " мурлыкает!"); // добавлено свое действие к действию родителя
+};
+
+let cat = new Cat('Кот');
 cat.run();
-let snake = new Snake("Змея");
-snake.run();
-let elephant = new Elephant("Слон");
+
+
+
+function Cock(name) {
+    Animal.apply(this, arguments); // вызов конструктора родителя
+}
+Cock.prototype = Object.create(Animal.prototype);
+Cock.prototype.constructor = Cock;
+
+Cock.prototype.run = function () {
+    Animal.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!")
+    alert(this.name + " кудахчет!"); // добавлено свое действие к действию родителя
+};
+
+let cock = new Cock('Петух');
+cock.run();
+
+
+
+function Elephant(name) {
+    Animal.apply(this, arguments); // вызов конструктора родителя
+}
+Elephant.prototype = Object.create(Animal.prototype);
+Elephant.prototype.constructor = Elephant;
+
+Elephant.prototype.run = function () {
+    Animal.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!")
+    alert(this.name + " топает!"); // добавлено свое действие к действию родителя
+};
+
+let elephant = new Elephant('Слон');
 elephant.run();
+
+
+
+function Snake(name) {
+    Animal.apply(this, arguments); // вызов конструктора родителя
+}
+Snake.prototype = Object.create(Snake1.prototype);
+Snake.prototype.constructor = Snake;
+
+Snake.prototype.run = function () {
+    Snake1.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!")
+    alert(this.name + " шипит!"); // добавлено свое действие к действию родителя
+};
+
+let snake = new Snake('Змея');
+snake.run();
+
