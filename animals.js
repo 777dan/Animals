@@ -3,10 +3,10 @@ function Animal(name) {
     this.speed = 0;
 }
 
-function Snake1(name) {
-    this.name = name;
-    this.speed = 0;
-}
+// function Snake1(name) {
+//     this.name = name;
+//     this.speed = 0;
+// }
 
 Animal.prototype.run = function () {
     alert(this.name + " бежит!")
