@@ -12,9 +12,9 @@ Animal.prototype.run = function () {
     alert(this.name + " бежит!")
 }
 
-Snake1.prototype.run = function () {
-    alert(this.name + " ползёт!")
-}
+// Snake1.prototype.run = function () {
+//     alert(this.name + " ползёт!")
+// }
 
 
 
@@ -103,11 +103,11 @@ elephant.run();
 function Snake(name) {
     Animal.apply(this, arguments); // вызов конструктора родителя
 }
-Snake.prototype = Object.create(Snake1.prototype);
-Snake.prototype.constructor = Snake;
+// Snake.prototype = Object.create(Snake1.prototype);
+// Snake.prototype.constructor = Snake;
 
 Snake.prototype.run = function () {
-    Snake1.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!")
+    // Snake1.prototype.run.apply(this); // вызов метода run родителя, который выполнит alert(this.name + " бежит!")
     alert(this.name + " шипит!"); // добавлено свое действие к действию родителя
 };
 
